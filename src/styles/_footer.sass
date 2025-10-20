@@ -1,0 +1,35 @@
+// STYLING FOR FOOTER COMPONENT
+@use "./_colors.sass" as var
+
+.bottom-content
+	width: 100%
+	padding: 25px
+	box-shadow: 0px 0px 50px 10px #00000059
+
+	&__navigation
+		width: 100%
+		display: flex
+		justify-content: space-between
+
+	&__button
+		cursor: pointer
+		display: inherit
+		height: fit-content
+		flex-direction: column
+		justify-content: center
+		transition: transform 0.5s
+
+		&.active span
+			color: var.$special-text-color
+
+		&-text
+			font-size: 12px
+			font-family: var.$custom-text-font
+			color: light-dark(var.$primary-text-color, var.$secondary-text-color)
+
+		&-image
+			width: auto
+			height: 24px
+
+	&__button:hover
+		transform: scale(110%)

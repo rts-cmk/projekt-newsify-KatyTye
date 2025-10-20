@@ -5,28 +5,19 @@ import Archive from './pages/Archive.jsx'
 import Popular from './pages/Popular.jsx'
 import Settings from './pages/Settings.jsx'
 import App from './pages/App.jsx'
-
-function checkOnboarding(element) {
-	const isOnboarded = localStorage.getItem("isOnboarded")
-
-	if (isOnboarded != "true") {
-		return <Onboarding />
-	} else if (element == <Onboarding /> && isOnboarded == "true") {
-		return <App />
-	} else {
-		return element
-	}
-}
+import { StrictMode } from 'react'
 
 createRoot(document.getElementById('root')).render(
-	<BrowserRouter>
-		<Routes>
-			<Route index path="*" element={checkOnboarding(<App />)} />
-			<Route index path="/" element={checkOnboarding(<App />)} />
-			<Route index path="/archive" element={checkOnboarding(<Archive />)} />
-			<Route index path="/popular" element={checkOnboarding(<Popular />)} />
-			<Route index path="/settings" element={checkOnboarding(<Settings />)} />
-			<Route index path="/boarding" element={checkOnboarding(<Onboarding />)} />
-		</Routes>
-	</BrowserRouter>
+	<StrictMode>
+		<BrowserRouter>
+			<Routes>
+				<Route index element={<App />} />
+				<Route path="*" element={<App />} />
+				<Route path="/archive" element={<Archive />} />
+				<Route path="/popular" element={<Popular />} />
+				<Route path="/settings" element={<Settings />} />
+				<Route path="/boarding" element={<Onboarding />} />
+			</Routes>
+		</BrowserRouter>
+	</StrictMode>
 )
