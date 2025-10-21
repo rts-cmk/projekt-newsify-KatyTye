@@ -1,17 +1,13 @@
-import LogoFooter from "../components/LogoFooter"
 import LogoHeader from "../components/LogoHeader"
-import { CheckBoarding } from "../components/CheckBoarding.jsx"
-import "../styles/home.sass"
+import LogoFooter from "../components/LogoFooter"
+import "../styles/main.sass"
 
 function App() {
 
 	return (
 		<>
 			<LogoHeader containsSearchBar />
-
 			<LogoFooter />
-
-			{CheckBoarding === "/boarding" ? changePage("/boarding") : console.log("LOADED PAGE")}
 		</>
 	)
 }

@@ -1,12 +1,11 @@
-export function CheckBoarding() {
+import Onboarding from '../pages/Onboarding.jsx'
+
+export function CheckBoarding(element) {
 	const isOnboarded = localStorage.getItem("isOnboarded") || null
-	console.log("Onboarding status:", isOnboarded)
 
 	if (isOnboarded != "true") {
-		console.log("User not onboarded, redirecting to /boarding")
-		return "/boarding"
+		return <Onboarding />
 	} else {
-		console.log("User is onboarded, staying on current page")
-		return ""
+		return element
 	}
 }

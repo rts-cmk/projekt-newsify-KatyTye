@@ -1,3 +1,4 @@
+import { CheckBoarding } from './components/CheckBoarding.jsx'
 import { BrowserRouter, Route, Routes } from 'react-router'
 import Onboarding from './pages/Onboarding.jsx'
 import { createRoot } from 'react-dom/client'
@@ -11,12 +12,12 @@ createRoot(document.getElementById('root')).render(
 	<StrictMode>
 		<BrowserRouter>
 			<Routes>
-				<Route index element={<App />} />
-				<Route path="*" element={<App />} />
-				<Route path="/archive" element={<Archive />} />
-				<Route path="/popular" element={<Popular />} />
-				<Route path="/settings" element={<Settings />} />
-				<Route path="/boarding" element={<Onboarding />} />
+				<Route index element={CheckBoarding(<App />)} />
+				<Route path="*" element={CheckBoarding(<App />)} />
+				<Route path="/archive" element={CheckBoarding(<Archive />)} />
+				<Route path="/popular" element={CheckBoarding(<Popular />)} />
+				<Route path="/settings" element={CheckBoarding(<Settings />)} />
+				<Route path="/boarding" element={CheckBoarding(<Onboarding />)} />
 			</Routes>
 		</BrowserRouter>
 	</StrictMode>
