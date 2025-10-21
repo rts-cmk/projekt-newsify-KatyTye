@@ -1,9 +1,12 @@
+import { SwitchBackgroundElement } from "../components/SwitchBackground"
+import boardingData from "../data/boarding.json"
+
 function Onboarding() {
 
 	return (
-		<>
-			<h1>Bording</h1>
-		</>
+		<main className="main-content-boarding">
+			<SwitchBackgroundElement source={boardingData} extra={true} />
+		</main>
 	)
 }
 
