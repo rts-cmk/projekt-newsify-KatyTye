@@ -5,7 +5,7 @@ function LogoHeader({ containsSearchBar }) {
 	return (
 		<header className="top-content">
 			<Link className="top-content__image-container" to={"/"}>
-				<img src="/logo.svg" alt="logo" className="top-content__page-logo"></img>
+				<img src="./logo.svg" alt="logo" className="top-content__page-logo"></img>
 				<span className="top-content__logo-name">
 					Newsify
 				</span>

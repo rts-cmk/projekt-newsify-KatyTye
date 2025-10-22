@@ -13,8 +13,8 @@ createRoot(document.getElementById('root')).render(
 	<StrictMode>
 		<BrowserRouter>
 			<Routes>
-				<Route index element={CheckBoarding(<Home />)} />
-				<Route path="*" element={CheckBoarding(<Error />)} />
+				<Route path="/" element={CheckBoarding(<Home />)} />
+				<Route path="/*" element={CheckBoarding(<Error />)} />
 				<Route path="/archive" element={CheckBoarding(<Archive />)} />
 				<Route path="/popular" element={CheckBoarding(<Popular />)} />
 				<Route path="/settings" element={CheckBoarding(<Settings />)} />

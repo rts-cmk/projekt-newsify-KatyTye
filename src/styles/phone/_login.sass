@@ -1,0 +1,84 @@
+// STYLING FOR LOGIN PAGE
+@use "../_colors.sass" as var
+
+#root
+	padding: 2dvh 6dvh
+
+.main-content-login
+	display: flex
+	width: 100vw
+	align-items: center
+	flex-direction: column
+
+	&__logo-holder
+		font-size: 38px
+		display: inherit
+		font-weight: bold
+		align-items: inherit
+		text-decoration: none
+		flex-direction: inherit
+		color: light-dark(var.$primary-text-color, var.$secondary-text-color)
+
+		& span
+			color: inherit
+			margin-top: 15px
+
+	&__logo
+		width: 88px
+
+	&__title
+		margin: 6dvh 0
+
+	&__button
+		width: 100%
+		height: 70px
+		font-size: 16px
+		cursor: pointer
+		line-height: 26px
+		border-radius: 100px
+		background: transparent
+		transition: transform 0.3s
+		border: 1px solid var.$third-background-color
+
+		&-user
+			border: none
+			color: var.$primary-button-color
+			background: var.$special-background-color
+
+			&:hover
+				background: var.$special-hover-color
+
+		&:nth-of-type(1)
+			margin-bottom: 1dvh
+
+		&:nth-of-type(2)
+			margin-top: 1dvh
+
+		&:hover
+			transform: scale(105%)
+
+	&__line-breaker
+		width: 100%
+		font-size: 16px
+		margin: 6dvh 0
+		display: inherit
+		text-align: center
+		align-items: center
+		justify-content: space-between
+
+		& span:first-child, & span:last-child
+			height: 2px
+			width: 144px
+			background: var.$third-background-color
+
+	&__sign-up
+		margin-top: 25px
+		line-height: 26px
+
+		& a
+			text-decoration: none
+			color: var.$special-text-color
+
+			&:hover, &:focus
+				text-decoration: underline
+				color: var.$special-hover-color

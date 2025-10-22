@@ -67,17 +67,17 @@ export function SwitchBackgroundElement({ source, extra = false, buttons = true 
 		})
 	}
 
-	function handleSkip() {
+	function handleSkip(target) {
 		localStorage.setItem("isOnboarded", "true")
+		target.target.parentElement.parentElement.display = false
 		location.reload()
 	}
 
-	function handleNext() {
+	function handleNext(target) {
 		setCurrent(current + 1)
 
 		if (current + 1 >= source.length) {
-			localStorage.setItem("isOnboarded", "true")
-			location.reload()
+			handleSkip(target)
 		}
 	}
 
@@ -90,8 +90,8 @@ export function SwitchBackgroundElement({ source, extra = false, buttons = true 
 			{returnContent()}
 
 			{buttons && <nav className="main-content-boarding__boarding-button-holder">
-				<button className="main-content-boarding__boarding-button-skip" onClick={handleSkip}>Skip</button>
-				<button className="main-content-boarding__boarding-button-next" onClick={handleNext}>Next</button>
+				<button className="main-content-boarding__boarding-button-skip" onClick={(target) => handleSkip(target)}>Skip</button>
+				<button className="main-content-boarding__boarding-button-next" onClick={(target) => handleNext(target)}>Next</button>
 			</nav>}
 		</>
 	)
