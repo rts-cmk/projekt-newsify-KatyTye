@@ -8,4 +8,13 @@ export default defineConfig({
     outDir: 'docs',
   },
   base: './',
+  server: {
+    proxy: {
+      '/nyt': {
+        target: 'https://api.nytimes.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/nyt/, ''),
+      },
+    },
+  },
 })
