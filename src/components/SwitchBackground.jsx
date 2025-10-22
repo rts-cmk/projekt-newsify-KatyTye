@@ -74,10 +74,10 @@ export function SwitchBackgroundElement({ source, extra = false, buttons = true 
 	}
 
 	function handleNext(target) {
-		setCurrent(current + 1)
-
 		if (current + 1 >= source.length) {
 			handleSkip(target)
+		} else {
+			setCurrent(current + 1)
 		}
 	}
 
