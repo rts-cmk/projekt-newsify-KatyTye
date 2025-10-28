@@ -11,7 +11,7 @@ export function Login() {
 		<>
 			<main className="main-content-login">
 				<figure className="main-content-login__logo-holder">
-					<img src="./logo.svg" alt="newsify logo" className="main-content-login__logo"></img>
+					<img src={logo} alt="newsify logo" className="main-content-login__logo"></img>
 					<span className="main-content-login__logo-name">Newsify</span>
 				</figure>
 

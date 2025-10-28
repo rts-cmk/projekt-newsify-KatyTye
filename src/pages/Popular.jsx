@@ -1,9 +1,10 @@
-import ArchiveWhite from "../assets/icons/archive_white.svg";
+import ArchiveLogo from "../assets/icons/archive.svg?react"
 import LogoHeader from "../components/LogoHeader"
 import LogoFooter from "../components/LogoFooter"
 import categoriesList from "../data/categories.json"
 import { getPopular } from "../helpers/nyt-api.js"
 import Details from "../components/Details.jsx"
+import logo from "../assets/icons/logo.svg"
 import { useEffect, useState } from "react"
 
 function Popular() {
@@ -23,13 +24,17 @@ function Popular() {
 			})
 	}, [render])
 
+	function openArticle(to) {
+		open(to, "_blank")
+	}
+
 	function printArticles(type) {
 		return articles.map((currentArticle) => {
 			if (!`${currentArticle.section}${currentArticle.subsection}`.toLowerCase().includes(type.toLowerCase())) { return <></> }
 
-			return <article className="main-content__article" key={currentArticle.title}>
+			return <article className="main-content__article" onClick={() => { openArticle(currentArticle.url) }} key={currentArticle.title}>
 				<figure className="main-content__article-holder">
-					<img className="main-content__article-image" src={currentArticle.media?.[0]?.["media-metadata"][0].url || "./logo.svg"} alt="logo"></img>
+					<img className="main-content__article-image" src={currentArticle.media?.[0]?.["media-metadata"][0].url || logo} alt="logo"></img>
 
 					<figcaption className="main-content__article-content">
 						<h2 className="main-content__article-title">
@@ -42,7 +47,7 @@ function Popular() {
 					</figcaption>
 
 					<button className="main-content__article-archive">
-						<img src={ArchiveWhite} alt="archive icon"></img>
+						<ArchiveLogo />
 					</button>
 				</figure>
 			</article>
