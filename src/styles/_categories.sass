@@ -1,0 +1,60 @@
+// STYLING FOR CATEGORIES COMPONENT
+@use "./_colors.sass" as var
+
+.main-content
+
+	&__article
+		width: 100dvw
+		cursor: pointer
+		overflow-x: scroll
+		list-style-type: none
+		scrollbar-width: none
+		padding: 16px 25px 0 25px
+		border-top: 1px solid var.$third-background-color
+
+		&:nth-of-type(n+2)
+			margin-top: 16px
+
+		&-archive
+			width: 70px
+			height: 70px
+			border: none
+			overflow: hidden
+			margin-left: 30px
+			background: var.$special-background-color
+
+			img
+				width: 24px
+				height: 24px
+
+		&-content
+			width: 65dvw
+			display: inherit
+			justify-content: center
+			flex-direction: column
+
+		&-holder
+			gap: 25px
+			display: flex
+			overflow: scroll
+			width: fit-content
+			scrollbar-width: none
+
+		&-image
+			width: 72px
+			height: 72px
+			border-radius: 10px
+
+	&-article
+		&__section
+
+			&-list
+				padding-top: 16px
+
+			&-holder
+				gap: 20px
+				display: inherit
+				align-items: inherit
+
+				&-image
+					width: 18px
