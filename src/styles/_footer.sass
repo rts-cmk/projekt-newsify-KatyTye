@@ -17,10 +17,16 @@
 		height: fit-content
 		text-decoration: none
 		justify-content: center
-		color: var.$primary-text-color
+		color: light-dark(var.$primary-text-color, var.$secondary-text-color)
 
 		flex-direction: column
 		transition: transform 0.5s
+
+		&:hover
+			transform: scale(110%)
+
+		svg
+			transition: stroke 0.5s
 
 		&.active
 			svg
@@ -37,6 +43,3 @@
 		&-image
 			width: auto
 			height: 24px
-
-	&__button:hover
-		transform: scale(110%)

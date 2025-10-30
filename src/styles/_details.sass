@@ -17,6 +17,10 @@
 	&:last-of-type
 		border-bottom-width: 1px
 
+	&__nothing
+		text-align: center
+		padding: 25px 0
+
 	&__summary
 		display: flex
 		cursor: pointer
@@ -47,5 +51,8 @@
 		transition: transform 0.3s ease
 		transform: rotate(0deg)
 
-	&[open] &__arrow
+	&[open]
+		padding-bottom: 0
+
+	&[open]	&__arrow
 		transform: rotate(90deg)
