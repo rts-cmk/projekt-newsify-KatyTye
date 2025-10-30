@@ -27,7 +27,7 @@ export function SwitchBackgroundElement({ source, extra = false, buttons = true 
 	const [current, setCurrent] = useState(0)
 
 	useEffect(() => {
-		const darkMode = Boolean(localStorage.getItem("darkMode")) || false
+		const darkMode = Boolean(localStorage.getItem("dark")) || false
 		setCurrentImage(returnImageList(darkMode ? "black" : "white"))
 	}, [])
 

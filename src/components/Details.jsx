@@ -13,8 +13,8 @@ export default function Details({ title, children, ...props }) {
 	}
 
 	return (
-		<details onToggle={handleToggle} {...props} className={"main-content-article__section animated-details main-content-article__" + newName} key={newName + "-section"}>
-			<summary className="animated-details__summary">
+		<details onToggle={handleToggle} {...props} className={"main-content-article__section animated-details main-content-article__" + newName}>
+			<summary className="animated-details__summary" key={newName + "-summary"}>
 				<div>
 					<img src={logo} alt="logo"></img>
 					<h2>{title}</h2>
