@@ -13,7 +13,7 @@ function LogoHeader({ containsSearchBar }) {
 				</span>
 			</Link>
 
-			{containsSearchBar && <form action="#" className="top-content__search-bar">
+			{containsSearchBar && <form action="/search" className="top-content__search-bar">
 				<input type="text" name="search" className="top-content__search-content" placeholder="Search news" required></input>
 			</form>}
 		</header>
