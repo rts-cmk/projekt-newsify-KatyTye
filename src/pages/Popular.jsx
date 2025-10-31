@@ -1,3 +1,4 @@
+import { checkWatchList, openArticle, retriveTarget, categoryCheck } from "../components/Article.jsx"
 import ArchiveLogo from "../assets/icons/archive.svg?react"
 import categoriesList from "../data/categories.json"
 import { getPopular } from "../helpers/nyt-api.js"
@@ -22,40 +23,30 @@ function Popular() {
 			})
 	}, [render])
 
-	function openArticle(to) {
-		open(to, "_blank")
-	}
-
-	function retriveTarget(target) {
-		if (target.nodeName == "svg") {
-			return target.parentElement
-		} else if (target.nodeName == "path") {
-			return target.parentElement.parentElement
-		}
-		return target
-	}
-
 	function articleWatchList(target, id) {
+		const listData = localStorage.getItem("list") || null
 		let newTarget = retriveTarget(target)
 
-		newTarget.classList.toggle("active")
+		const parentElm = newTarget.parentElement
+		let saveData = ""
 
-		if (localStorage.getItem("list") == null) {
-			localStorage.setItem("list", `${id},`)
-		} else if (localStorage.getItem("list").includes(id)) {
-			const newList = localStorage.getItem("list").replaceAll(`${id},`, "")
+		saveData += `${id}=`
+		saveData += `${parentElm.parentElement.attributes.data.value}=`
+		saveData += `${parentElm.attributes.data.value}=`
+		saveData += `${parentElm.childNodes[0].src}=`
+		saveData += `${parentElm.childNodes[1].childNodes[0].textContent}=`
+		saveData += `${parentElm.childNodes[1].childNodes[1].textContent}---`
+
+		if (listData == null) {
+			localStorage.setItem("list", saveData)
+		} else if (listData.includes(id)) {
+			const newList = listData.replaceAll(saveData, "")
 			localStorage.setItem("list", newList)
 		} else {
-			localStorage.setItem("list", `${localStorage.getItem("list")}${`${id},`}`)
+			localStorage.setItem("list", `${listData}${saveData}`)
 		}
-	}
 
-	function checkWatchList(target, id) {
-		let newTarget = retriveTarget(target)
-
-		if (localStorage.getItem("list").includes(id)) {
-			newTarget.classList.add("active")
-		}
+		newTarget.classList.toggle("active")
 	}
 
 	function printArticles(type) {
@@ -72,8 +63,8 @@ function Popular() {
 		} else {
 			return articles.map((currentArticle) => {
 				if (`${currentArticle.section}${currentArticle.subsection}`.toLowerCase().includes(type.toLowerCase())) {
-					return <article className="main-content__article" key={currentArticle.id}>
-						<figure className="main-content__article-holder">
+					return <article className="main-content__article" key={currentArticle.id} data={type}>
+						<figure className="main-content__article-holder" data={currentArticle.url}>
 							<img className="main-content__article-image" src={currentArticle.media?.[0]?.["media-metadata"][0].url || logo} alt="logo"></img>
 
 							<figcaption className="main-content__article-content" onClick={() => { openArticle(currentArticle.url) }} key={currentArticle.title}>
@@ -86,8 +77,9 @@ function Popular() {
 								</p>
 							</figcaption>
 
-							<button className="main-content__article-archive" onLoad={(target) => checkWatchList(target, currentArticle.id)} onClick={(event) => articleWatchList(event.target, currentArticle.id)}>
-								<ArchiveLogo />
+							<button className="main-content__article-archive" onClick={(event) => articleWatchList(event.target, currentArticle.id)}>
+								<ArchiveLogo onLoad={(event) => checkWatchList(event.target, currentArticle.id)} />
+								{/* THE ELEMENT ABOVE DOES NOT LOAD THE ICON IF ITS ALREADY IN WATCH LIST (on page reload) */}
 							</button>
 						</figure>
 					</article>
@@ -96,22 +88,11 @@ function Popular() {
 		}
 	}
 
-	function categorieCheck(name) {
-		const dataSettings = localStorage.getItem("settings") || ""
-
-		if (dataSettings.includes(name)) {
-			return false
-		}
-
-		return true
-	}
-
 	return (
-		<main className="main-content-articles">
-
+		<main className="main-content-popular">
 			{categoriesList.map((currentDetails, idx) => {
-				if (categorieCheck(currentDetails.toLowerCase())) {
-					return <Details title={currentDetails} key={currentDetails + "-section-" + idx}>
+				if (categoryCheck(currentDetails.toLowerCase())) {
+					return <Details title={currentDetails} key={currentDetails + "-popular-" + idx}>
 						{printArticles(currentDetails)}
 					</Details>
 				}
