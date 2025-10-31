@@ -2,6 +2,7 @@ import LogoHeader from "../components/LogoHeader"
 import LogoFooter from "../components/LogoFooter"
 import categoriesList from "../data/categories.json"
 import logo from "../assets/icons/logo.svg"
+import Credits from "../components/Credits"
 
 function Settings() {
 
@@ -41,6 +42,7 @@ function Settings() {
 
 	return (
 		<>
+			<Credits />
 			<LogoHeader />
 			<main className="main-content-settings">
 				<section className="settings-section">
