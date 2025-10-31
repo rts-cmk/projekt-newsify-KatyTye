@@ -1,0 +1,85 @@
+// STYLING FOR CATEGORIES COMPONENT
+@use "./_colors.sass" as var
+
+.main-content
+
+	&__article
+		width: 100dvw
+		cursor: pointer
+		overflow-x: scroll
+		list-style-type: none
+		scrollbar-width: none
+		padding: 0 0 0 25px
+		border-top: 1px solid var.$third-background-color
+
+		&:first-of-type
+			margin-top: 16px
+
+		&-title
+			font-size: 19px
+			overflow: hidden
+			white-space: nowrap
+			text-overflow: ellipsis
+
+		&-description
+			height: 45px
+			overflow: hidden
+			white-space: nowrap
+			text-overflow: ellipsis
+			text-wrap: wrap
+
+		&-archive, &-archive-delete
+			width: 104px
+			height: 104px
+			border: none
+			cursor: pointer
+			overflow: hidden
+			margin-left: 30px
+			color: var.$primary-button-color
+			background: var.$special-background-color
+
+			&.active svg
+				fill: var.$primary-button-color
+
+			svg
+				width: 24px
+				height: 24px
+				fill: transparent
+				transition: 0.3s fill
+
+		&-archive-delete
+			background: var.$fourth-background-color
+
+		&-content
+			width: 65dvw
+			margin: 16px 0
+			display: inherit
+			justify-content: center
+			flex-direction: column
+
+		&-holder
+			gap: 25px
+			display: flex
+			overflow: scroll
+			width: fit-content
+			scrollbar-width: none
+
+		&-image
+			width: 72px
+			height: 72px
+			margin: 16px 0
+			border-radius: 10px
+
+	&-article
+		&__section
+
+			&-list
+				padding-top: 16px
+
+			&-holder
+				gap: 20px
+				display: inherit
+				align-items: inherit
+
+				&-image
+					width: 18px

@@ -1,0 +1,58 @@
+@use "./_colors.sass" as var
+
+.animated-details
+	height: 55px
+	width: 100dvw
+	overflow: hidden
+	padding-block: 1rem
+	border-width: 1px 0 0 0
+	transition: height 0.5s ease
+	border: 1px solid var.$third-background-color
+	border-right: 0
+	border-left: 0
+
+	&:nth-of-type(n+2)
+		border-top-width: 0px
+
+	&:last-of-type
+		border-bottom-width: 1px
+
+	&__nothing
+		text-align: center
+		padding: 25px 0
+
+	&__summary
+		display: flex
+		cursor: pointer
+		list-style: none
+		padding: 0 25px
+		font-weight: bold
+		align-items: center
+		text-transform: uppercase
+		justify-content: space-between
+
+		div
+			gap: 15px
+			display: inherit
+			align-items: center
+
+			img
+				width: 18px
+
+			h2
+				font-size: 16px
+
+		svg
+			width: unset
+			height: unset
+			color: light-dark(var.$primary-text-color, var.$secondary-text-color)
+
+	&__arrow
+		transition: transform 0.3s ease
+		transform: rotate(0deg)
+
+	&[open]
+		padding-bottom: 0
+
+	&[open]	&__arrow
+		transform: rotate(90deg)

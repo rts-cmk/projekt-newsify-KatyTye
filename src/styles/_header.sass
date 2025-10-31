@@ -1,0 +1,43 @@
+// STYLING FOR HEADER COMPONENT
+@use "./_colors.sass" as var
+
+.top-content
+	gap: 25px
+	width: 100%
+	padding: 25px
+	display: inherit
+	align-items: center
+	flex-direction: column
+
+	&__image-container
+		gap: 10px
+		cursor: pointer
+		display: inherit
+		width: fit-content
+		align-items: center
+		text-decoration: none
+		color: light-dark(var.$primary-text-color, var.$secondary-text-color)
+
+	&__page-logo
+		width: 19px
+
+	&__logo-name
+		font-size: 24px
+		font-weight: bold
+
+	&__search-bar
+		width: 100%
+
+	&__search-content
+		outline: none
+		width: inherit
+		font-size: 14px
+		padding: 12px 15px
+		border-radius: 5px
+		color: var.$special-color
+		border: 2px solid transparent
+		font-family: var.$custom-text-font
+		background: light-dark(var.$primary-search-color, var.$secondary-search-color)
+
+		&:focus
+			border: 2px solid light-dark(var.$primary-text-color, var.$secondary-text-color)
